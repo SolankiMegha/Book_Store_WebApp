@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Book_Store_WebApp.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Book's List</h2>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Title : @Html.TextBox("search")
+        <input type="submit" value="Search" class=" btn btn-outline-primary" />
+    </p>
+}
+
+<table class="table table-bordered table-hover text-center">
+    <tr class="text-center">
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publicationYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.name)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publicationYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.name)
+            </td>
+            <td>
+                <span class="btn btn-outline-info">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { style = "text-decoration: none;color:black;" })
+                </span>
+                <span class="btn btn-outline-warning">
+
+                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { style = "text-decoration: none;color:black;" })
+                </span>
+                <span class="btn btn-outline-danger">
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { style = "text-decoration: none;color:black;" })
+                </span>
+            </td>
+        </tr>
+    }
+
+</table>

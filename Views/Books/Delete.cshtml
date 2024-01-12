@@ -1,0 +1,58 @@
+﻿@model Book_Store_WebApp.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    <dl class="text-center">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publicationYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publicationYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row align-content-center" style="margin-top:20px">
+            <div class="col-md-offset-5 col-md-10" style="margin-left:46%">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    }
+</div>
